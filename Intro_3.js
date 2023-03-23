@@ -389,16 +389,18 @@ function lettereDispari (stringa) {
     
     for (let i = 0; i < stringa.length-1; i++) {
         
-        while (i < stringa.length-1) {
-
+        if (stringa[i] % 2 !== 0) {
+             
+            
             console.log(stringa[i])
-            i++;
 
-        }
+        };
 
     };
 
 };
+
+console.log(lettereDispari('porcatroia'))
 
 
 //  ESERCIZI LIBRO:
