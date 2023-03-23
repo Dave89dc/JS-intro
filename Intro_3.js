@@ -192,16 +192,260 @@ log(sommaDue(5));  // Si fa così! Si separano le funzioni pure da quelle impure
 // 1) Scrivere una funzione che dato un numero se è positivo
 //    lo moltiplica per due, altrimenti return number:
 
+
+function moltiplicaPer2 (number) {
+
+    if (number > 0) {
+        let result = number*2;
+        return result;
+    } else {
+        return number;
+    };
+
+};
+
+console.log(moltiplicaPer2(8));
+
+
 // 2) Scrivere una funzione che data una stringa restituisca la sua
 //    version maiuscola:
+
+
+// function maiuscolo (stringa) {
+
+//     let Maiuscolo = stringa.toUpperCase();
+//     return Maiuscolo;
+
+// };
+
+// console.log(maiuscolo('Voglio andare a mangiare la pizza!'));
+
+
+const maiuscolo = (stringa) => stringa.toUpperCase();
+
+console.log(maiuscolo('porcavacca'));
+
+
 
 // 3) Scrivere una funzione che data una stringa mi restituisca
 //    vero se è più lunga di 10 caratteri, altrimenti falso:
 
+
+// // function oltre10caratteri(stringa) {
+
+//     // if (stringa.length > 10) {
+//     //     return true;
+//     // } else {
+//     //     return false;
+//     // };
+
+// };
+
+// console.log(oltre10caratteri('paperino'));
+
+
+const oltre10caratteri = (stringa) => {
+
+    if (stringa.length > 10) {
+        return true;
+    } else {
+        return false;
+    };
+
+};
+
+console.log(oltre10caratteri('paperino'));
+
+
+
 // 4) Scrivere una funzione pura che restituisca la scacchiera:
+
+
+// function scacchiera (numero) {
+
+//     let box = "";
+//     let k = numero;
+    
+//     for (let y = 0; y < k; y ++) {
+    
+//         for (let x = 0; x < k; x++) {
+            
+//             if (y % 2 === 0) {
+            
+//                 if (x % 2 === 0) {
+//                     box += "#";
+//                 } else {
+//                     box += " ";
+//                 };
+    
+//             } else {
+    
+//                 if (x % 2 === 0) {
+//                     box += " ";
+//                 }else {
+//                     box += "#";
+//                 };
+    
+//             };
+            
+//         };
+    
+//         box += '\n';
+    
+//     };
+    
+//     return box;
+
+// };
+
+// console.log(scacchiera(6));
+
+
+const scacchiera = (numero) => {
+
+    let box = "";
+    let k = numero;
+    
+    for (let y = 0; y < k; y ++) {
+    
+        for (let x = 0; x < k; x++) {
+            
+            if (y % 2 === 0) {
+            
+                if (x % 2 === 0) {
+                    box += "#";
+                } else {
+                    box += " ";
+                };
+    
+            } else {
+    
+                if (x % 2 === 0) {
+                    box += " ";
+                }else {
+                    box += "#";
+                };
+    
+            };
+            
+        };
+    
+        box += '\n';
+    
+    };
+    
+    return box;
+
+};
+
+console.log(scacchiera(8));
+
 
 // 5) Scrivere una funzione che dato un numero restituisca una
 //    stringa con la logica FizzBuzz:
 
-// 6) Scrivere una funzione che data una stringa restituisca una stringa
-//    composta solo dai caratteri dispari dell'originale:
+
+// function FizzBuzz(numero) {
+
+//     if (numero % 3 === 0) {
+//         return "Fizz";
+//     } else if (numero % 5 === 0) {
+//         return "Buzz";
+//     } else if (numero % 3 === 0 && numero % 5 === 0) {
+//         return "FizzBuzz";
+//     } else {
+//         return numero;
+//     };
+
+// };
+
+// console.log(FizzBuzz(21));
+
+
+const FizzBuzz = (numero) => {
+
+    if (numero % 3 === 0) {
+        return "Fizz";
+    } else if (numero % 5 === 0) {
+        return "Buzz";
+    } else if (numero % 3 === 0 && numero % 5 === 0) {
+        return "FizzBuzz";
+    } else {
+        return numero;
+    };
+
+};
+
+console.log(FizzBuzz(27));
+
+
+
+// 6) Scrivere una funzione che data una stringa restituisca una 
+//    stringa composta solo dai caratteri dispari dell'originale:
+
+
+
+function lettereDispari (stringa) {
+    
+    for (let i = 0; i < stringa.length-1; i++) {
+        
+        while (i < stringa.length-1) {
+
+            console.log(stringa[i])
+            i++;
+
+        }
+
+    };
+
+};
+
+
+//  ESERCIZI LIBRO:
+
+
+function numeroMinimo (numero1, numero2) {
+
+    if (numero1 < numero2) {
+        return numero1;
+    } else if (numero1 > numero2) {
+        return numero2;
+    } else {
+        return 'I numeri sono uguali';
+    };
+
+};
+
+console.log(numeroMinimo(8, 8));
+
+
+function isEven (numero) {
+
+    if (numero % 2 === 0 || -numero % 2 === 0) {
+        return true;
+    } else if (numero % 2 !== 0 || -numero % 2 !== 0) {
+        return false;
+    };
+
+};
+
+console.log(isEven(-2));
+
+
+function countBs (stringa) {
+
+    for (let i = 0; i < stringa.length-1; i++) {
+       
+        let letteraB = stringa[i];
+        
+        if (letteraB == 'B') {
+            let quanteB = letteraB.length;
+            return quanteB;
+        };
+        
+    };
+
+};
+
+
+console.log(countBs('Baraacà'));
