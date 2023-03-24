@@ -96,32 +96,54 @@ console.log(fizzBuzzNumbers(numbersToFizzBuzz));
 //    e fa il console.log() di quelle più piccole di 5 caratteri:
 
 
-const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia'];
+const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia', 'nodo', 'panzerotto'];
 
 function only5Chars (array) {
 
-    let strings = array;
+    const newArray = [];
 
     for (let i = 0; i < array.length; i++) {
 
         if (array[i].length < 5) {
-            array.pop(i);
+            newArray.push(array[i]);
         };
         
     };
 
-    return array;
+    return newArray;
 
 };
 
-console.log(only5Chars(arrayOfStrings))
-
+console.log(only5Chars(arrayOfStrings));
 
 
 
 // 3) Scrivere una funzione che prende come parametro una stringa e ne restituisce
 //    un'altra composta dai primi 5 caratteri convertiti in maiuscolo:
 
+
+const food = ['cioccolato', 'torta', 'ravioli', 'fritto misto', 'gamberoni', 'fiorentina'];
+
+function firt5CharsToUppeCase (array) {
+
+    let newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+
+        if (i < 5) {
+            
+            
+            newArray.push(array[i].toUpperCase()) ;
+
+        };
+        
+    };
+
+    return newArray;
+
+};
+
+console.log(firt5CharsToUppeCase(food))
 
 
 
