@@ -193,37 +193,43 @@ log(sommaDue(5));  // Si fa così! Si separano le funzioni pure da quelle impure
 //    lo moltiplica per due, altrimenti return number:
 
 
-function moltiplicaPer2 (number) {
+// function doubleNumberIfPositive (number) {
 
-    if (number > 0) {
-        let result = number*2;
-        return result;
-    } else {
-        return number;
-    };
+//     if (number > 0) {
+//         let result = number*2;
+//         return result;
+//     };
 
-};
+//     return number;
 
-console.log(moltiplicaPer2(8));
+// };
+
+// console.log(doubleNumberIfPositive(8));
+
+
+const doubleNumberIfPositive = (n) => n > 0 ? n*2 : n;
+
+console.log(doubleNumberIfPositive(8));
+
 
 
 // 2) Scrivere una funzione che data una stringa restituisca la sua
 //    version maiuscola:
 
 
-// function maiuscolo (stringa) {
+// function stringToUppercase (stringa) {
 
 //     let Maiuscolo = stringa.toUpperCase();
 //     return Maiuscolo;
 
 // };
 
-// console.log(maiuscolo('Voglio andare a mangiare la pizza!'));
+// console.log(stringToUppercase('Voglio andare a mangiare la pizza!'));
 
 
-const maiuscolo = (stringa) => stringa.toUpperCase();
+const stringToUppercase = (stringa) => stringa.toUpperCase();
 
-console.log(maiuscolo('porcavacca'));
+console.log(stringToUppercase('porcavacca'));
 
 
 
@@ -231,7 +237,7 @@ console.log(maiuscolo('porcavacca'));
 //    vero se è più lunga di 10 caratteri, altrimenti falso:
 
 
-// // function oltre10caratteri(stringa) {
+// // function ifIsOver10letters(stringa) {
 
 //     // if (stringa.length > 10) {
 //     //     return true;
@@ -241,10 +247,10 @@ console.log(maiuscolo('porcavacca'));
 
 // };
 
-// console.log(oltre10caratteri('paperino'));
+// console.log(isTextMoreThan10Char('paperino'));
 
 
-const oltre10caratteri = (stringa) => {
+const isTextMoreThan10Char = (stringa) => {
 
     if (stringa.length > 10) {
         return true;
@@ -254,14 +260,14 @@ const oltre10caratteri = (stringa) => {
 
 };
 
-console.log(oltre10caratteri('paperino'));
+console.log(isTextMoreThan10Char('paperino'));
 
 
 
 // 4) Scrivere una funzione pura che restituisca la scacchiera:
 
 
-// function scacchiera (numero) {
+// function chessboard (numero) {
 
 //     let box = "";
 //     let k = numero;
@@ -301,7 +307,7 @@ console.log(oltre10caratteri('paperino'));
 // console.log(scacchiera(6));
 
 
-const scacchiera = (numero) => {
+const chessboard = (numero) => {
 
     let box = "";
     let k = numero;
@@ -338,75 +344,179 @@ const scacchiera = (numero) => {
 
 };
 
-console.log(scacchiera(8));
+console.log(chessboard(8));
 
 
 // 5) Scrivere una funzione che dato un numero restituisca una
 //    stringa con la logica FizzBuzz:
 
 
-// function FizzBuzz(numero) {
+// function convertNumberToFizzBuzz(numero) {
 
-//     if (numero % 3 === 0) {
-//         return "Fizz";
+//     if (numero % 3 === 0 && numero % 5 === 0) {
+//         return "FizzBuzz";
 //     } else if (numero % 5 === 0) {
 //         return "Buzz";
-//     } else if (numero % 3 === 0 && numero % 5 === 0) {
-//         return "FizzBuzz";
+//     } else if (numero % 3 === 0) {
+//         return "Fizz";
 //     } else {
 //         return numero;
 //     };
 
 // };
 
-// console.log(FizzBuzz(21));
+// console.log(convertNumberToFizzBuzz(21));
 
 
-const FizzBuzz = (numero) => {
+const convertNumberToFizzBuzz = (numero) => {
 
-    if (numero % 3 === 0) {
-        return "Fizz";
+    if (numero % 3 === 0 && numero % 5 === 0) {
+        return "FizzBuzz";
     } else if (numero % 5 === 0) {
         return "Buzz";
-    } else if (numero % 3 === 0 && numero % 5 === 0) {
-        return "FizzBuzz";
+    } else if (numero % 3 === 0) {
+        return "Fizz";
     } else {
         return numero;
     };
 
 };
 
-console.log(FizzBuzz(27));
+console.log(convertNumberToFizzBuzz(27));
 
 
 
 // 6) Scrivere una funzione che data una stringa restituisca una 
-//    stringa composta solo dai caratteri dispari dell'originale:
+//    stringa composta solo dai caratteri dispari (in array! partendo da zero,
+//    quindi sono lettere pari per la parola) dell'originale:
 
 
+// function selectOddCharsFromText(stringa) {
 
-function lettereDispari (stringa) {
+    // let cicciaculo = "";
     
-    for (let i = 0; i < stringa.length-1; i++) {
+    // for (let i = 0; i < stringa.length; i++) {
         
-        if (stringa[i] % 2 !== 0) {
+    //     if (i % 2 === 0) {
              
             
-            console.log(stringa[i])
+    //         cicciaculo += stringa[i];
 
+    //     };
+
+    // };
+
+    // return cicciaculo;
+
+// };
+
+// console.log(selectOddCharsFromText('porcatroia'));
+
+
+const selectOddCharsFromText = (stringa) => {
+
+    let oddChars = "";
+    
+    for (let i = 0; i < stringa.length; i++) {
+        
+        if (i % 2 !== 0) {
+            oddChars += stringa[i];
         };
 
     };
 
+    return oddChars;
+
 };
 
-console.log(lettereDispari('porcatroia'))
+console.log(selectOddCharsFromText('porcatroia'));
+
+
+// Scrivere una funzione che sommi tutti i numeri in un range prestabilito:
+
+
+function sumRange (startNumber, endNumber) {
+
+    let somma = 0;
+    
+    for (let i = startNumber; i <= endNumber; i++) {
+        somma += i;
+    };
+
+    return somma;
+
+};
+
+console.log(sumRange(0, 3));
+console.log(sumRange(1, 3));
+console.log(sumRange(1, 5));
+console.log(sumRange(2, 6));
+console.log(sumRange(6, 6));
+console.log(sumRange(-2, 2));
+
+
+
+
+// LE FUNZIONI POSSONO USARE ALTRE FUNZIONI:
+
+
+// function doubleAndPow3(selectNumber) {  // Volendo si può spezzare la funzione in
+//                                         // 2 sottofunzioni
+//     const double = selectNumber*2;
+//     const pow3 = double**3;
+//     return pow3;
+
+// };
+
+// console.log(doubleAndPow3(3));
+
+
+function makeDouble(selectNumber) {             // ECCO L'ESEMPIO
+    return selectNumber*2;
+}
+
+function makePow3 (selectNumber) {
+    return selectNumber**3;
+}
+
+function doubleAndPow3(selectNumber) {
+
+    const double = makeDouble(selectNumber);
+    const pow3 = makePow3(double);
+    return pow3;
+
+    // return makePow3(makeDouble(selectNumber));   VERSIONE SUPER RIASSUNTA!
+
+};
+
+// LE FUNZIONI POSSONO AVERE FUNZIONI AL LORO INTERNO!!!
+
+
+function ifMoreThan10CharUppercase (text) {
+
+    function isMoreThan10CharInside (textToCheck) {
+        return textToCheck.length > 10;
+    };
+
+    if (isMoreThan10CharInside (text)) {
+        return text.toUpperCase();
+    } else {
+        return text;
+    };
+
+};
+
+console.log(ifMoreThan10CharUppercase('La poantera rosa fa stendere dal ridere'));
+
+
 
 
 //  ESERCIZI LIBRO:
 
 
-function numeroMinimo (numero1, numero2) {
+// es.1
+
+function findMinNUmber (numero1, numero2) {
 
     if (numero1 < numero2) {
         return numero1;
@@ -418,36 +528,118 @@ function numeroMinimo (numero1, numero2) {
 
 };
 
-console.log(numeroMinimo(8, 8));
+console.log(findMinNUmber(8, 8));
 
 
-function isEven (numero) {
+// es.2
 
-    if (numero % 2 === 0 || -numero % 2 === 0) {
+
+function isEven(selectedNumber) {
+    
+    if (selectedNumber === 0) {
         return true;
-    } else if (numero % 2 !== 0 || -numero % 2 !== 0) {
+    };
+
+    if (selectedNumber === 1) {
         return false;
     };
 
+    if (selectedNumber < 0) {
+        selectedNumber = -selectedNumber;
+    };
+
+    const newNumber = selectedNumber - 2;
+    return isEven(newNumber);
+
 };
 
-console.log(isEven(-2));
+console.log(isEven(0));
+console.log(isEven(1));
+console.log(isEven(3));
+console.log(isEven(-8));
+
+
+// es.3
 
 
 function countBs (stringa) {
 
+    let letteraB = "";
+    
     for (let i = 0; i < stringa.length-1; i++) {
        
-        let letteraB = stringa[i];
         
-        if (letteraB == 'B') {
-            let quanteB = letteraB.length;
-            return quanteB;
+        if (stringa[i] == 'B') {
+            
+            letteraB += stringa[i];
+            
         };
         
     };
 
+    return letteraB.length;
+
 };
 
 
-console.log(countBs('Baraacà'));
+console.log(countBs('BaraBacBà'));
+
+
+
+// RICORSIONE:
+
+
+function sumRangeRecursive (startNumber, endNumber, accumulator = 0) {
+
+    if (startNumber > endNumber) {
+        return accumulator;
+    };
+
+    const newStart = startNumber + 1;
+    const newAccumulator = accumulator + startNumber;
+    return sumRangeRecursive (newStart, endNumber, newAccumulator);
+
+};
+
+console.log(sumRangeRecursive(0, 3));
+
+// 1) startNumber = 0; endNumber = 3; accumulator = 0; -> newStart = 1; newAccumulator = 0;
+// 2) startNumber = 1; endNumber = 3; accumulator = 0; -> newStart = 2; newAccumulator = 1;
+// 3) startNumber = 2; endNumber = 3; accumulator = 1; -> newStart = 3; newAccumulator = 3;
+// 4) startNumber = 3; endNumber = 3; accumulator = 3; -> newStart = 4; newAccumulator = 6;
+// 5) startNumber = 4; endNumber = 3; accumulator = 6; -> return accumulator (6) -> STOP
+
+
+function isMyNumberEven(selectedNumber) {
+    
+    if (selectedNumber === 0) {
+        return true;
+    };
+
+    if (selectedNumber === 1) {
+        return false;
+    };
+
+    const newNumber = selectedNumber - 2;
+    return !isMyNumberOdd(newNumber);
+
+};
+
+
+function isMyNumberOdd(selectedNumber) {
+
+    if (selectedNumber === 0) {
+        return false;
+    };
+    
+    if (selectedNumber === 1) {
+        return true;
+    };
+
+    const newNumber = selectedNumber - 2;
+    return !isMyNumberEven (newNumber);
+
+};
+
+console.log(isMyNumberEven(3));
+console.log(isMyNumberOdd(3));
