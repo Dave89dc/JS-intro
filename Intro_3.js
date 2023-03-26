@@ -47,7 +47,7 @@ for (let i = 0; i < 3; i++) {
     
 };
 
-for (let i = 0; i < 3; i++) {                         // Le variabili non si devono ripetere
+for (let i = 0; i < 3; i++) {                       // Le variabili non si devono ripetere
                                                     // all'interno dello stesso ciclo perché
     for (let i = 0; i < 3; i++) {                   // la variabile "shadow" va a sovrascrivere
                                                     // quella precedente, ed è per questo
@@ -397,7 +397,7 @@ console.log(convertNumberToFizzBuzz(27));
     
     // for (let i = 0; i < stringa.length; i++) {
         
-    //     if (i % 2 === 0) {
+    //     if (i % 2 !== 0) {
              
             
     //         cicciaculo += stringa[i];
@@ -569,7 +569,7 @@ function countBs (stringa) {
     for (let i = 0; i < stringa.length-1; i++) {
        
         
-        if (stringa[i] == 'B') {
+        if (stringa[i] === 'B') {
             
             letteraB += stringa[i];
             

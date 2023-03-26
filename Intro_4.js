@@ -51,14 +51,14 @@ let pippo = [15, 3, 23, 34, 21];
 // CICLARE UN ARRAY:
 
 
-// const arrayOfStrings = ['Andrea', 'Jing', 'Valentina', 'Vlad'];
+const arrayOfStrings = ['Andrea', 'Jing', 'Valentina', 'Vlad'];
 
-// for (let i = 0; i < arrayOfStrings.length; i++) {
+for (let i = 0; i < arrayOfStrings.length; i++) {
     
-//     const element = arrayOfStrings[i];
-//     console.log(element);
+    const element = arrayOfStrings[i];
+    console.log(element);
     
-// };
+};
 
 
 // ESERCIZI:
@@ -96,25 +96,25 @@ console.log(fizzBuzzNumbers(numbersToFizzBuzz));
 //    e fa il console.log() di quelle più piccole di 5 caratteri:
 
 
-const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia', 'nodo', 'panzerotto'];
+// const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia', 'nodo', 'panzerotto'];
 
-function only5Chars (array) {
+// function only5Chars (array) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        if (array[i].length < 5) {
-            newArray.push(array[i]);
-        };
+//         if (array[i].length < 5) {
+//             newArray.push(array[i]);
+//         };
         
-    };
+//     };
 
-    return newArray;
+//     return newArray;
 
-};
+// };
 
-console.log(only5Chars(arrayOfStrings));
+// console.log(only5Chars(arrayOfStrings));
 
 
 
@@ -122,29 +122,42 @@ console.log(only5Chars(arrayOfStrings));
 //    un'altra composta dai primi 5 caratteri convertiti in maiuscolo:
 
 
+
 const food = ['cioccolato', 'torta', 'ravioli', 'fritto misto', 'gamberoni', 'fiorentina'];
+
+
+function firt5CharsOfString (string) {
+
+    let stringToUpperCase = "";
+    
+    for (let i = 0; i < string.length; i++) {
+         
+        if (i < 5) {
+            stringToUpperCase += string[i];
+        };
+
+    };
+
+    return stringToUpperCase.toUpperCase();
+
+};
+
 
 function firt5CharsToUppeCase (array) {
 
     let newArray = [];
 
     for (let i = 0; i < array.length; i++) {
-
-        if (i < 5) {
-            
-            
-            newArray.push(array[i].toUpperCase()) ;
-
-        };
         
+        newArray.push(firt5CharsOfString (array[i]));
+
     };
 
     return newArray;
 
 };
 
-console.log(firt5CharsToUppeCase(food))
-
+console.log(firt5CharsToUppeCase(food));
 
 
 
@@ -153,9 +166,112 @@ console.log(firt5CharsToUppeCase(food))
 
 
 
+function noSpaceTextLength (text) {
+
+    let newText = "";
+
+    if (typeof text === 'string') {
+            
+        for (let i = 0; i < text.length; i++) {
+        
+            if (text[i] !== " ") {
+                newText += text[i];
+            };
+
+        };
+
+        return newText.length;
+
+    };
+
+    return "";
+    
+};
+
+console.log(noSpaceTextLength("le polpette della nonna sono buonissime"));
 
 
 
 
 // 5) Scrivere una funzione che prende come parametro un stringa e 
 //    restituisce il numero degli spazi: 
+
+
+
+function numberOfSpaceChars (text) {
+
+    let newText = "";
+
+    if (typeof text === 'string') {
+            
+        for (let i = 0; i < text.length; i++) {
+        
+            if (text[i] === " ") {
+                newText += text[i];
+            };
+
+        };
+
+        return newText.length;
+
+    };
+
+    return "";
+
+};
+
+console.log(numberOfSpaceChars("le polpette della nonna sono buonissime"));
+
+
+
+// Esercizio Bean Counting libro (ch. 3):
+
+
+function countBs (stringa) {
+
+    let letteraB = "";
+    
+    for (let i = 0; i < stringa.length; i++) {
+       
+        
+        if (stringa[i] === 'B') {
+            
+            letteraB += stringa[i];
+            
+        };
+        
+    };
+
+    return letteraB.length;
+
+};
+
+
+console.log(countBs('BaraBacBà'));
+
+
+function countChar (text, char) {
+
+    if (typeof text === 'string' && typeof char === 'string') {
+
+        let letteraB = "";
+    
+        for (let i = 0; i < text.length; i++) {
+       
+        
+            if (text[i] === char) {
+                letteraB += text[i];
+            };
+        
+        };
+
+        return letteraB.length;
+
+    };
+
+    return "";
+
+};
+
+
+console.log(countChar('ciao rino, salutami checco', 'r'));
