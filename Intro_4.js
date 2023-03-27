@@ -51,14 +51,317 @@ let pippo = [15, 3, 23, 34, 21];
 // CICLARE UN ARRAY:
 
 
-const arrayOfStrings = ['Andrea', 'Jing', 'Valentina', 'Vlad'];
+const arrayOfClass = ['Andrea', 'Davide', 'Jing', 'Valentina', 'Vlad'];
 
-for (let i = 0; i < arrayOfStrings.length; i++) {
+// for (let i = 0; i < arrayOfClass.length; i++) {
     
-    const element = arrayOfStrings[i];
-    console.log(element);
+//     const element = arrayOfClass[i];
+//     console.log(element);
+    
+// };
+
+const indexOfJing = arrayOfClass.indexOf('Jing');
+console.log(indexOfJing);
+
+const indexOfimone = arrayOfClass.indexOf('Simone');
+console.log(indexOfimone);
+
+arrayOfClass[0] = 'Pietro';
+console.log(arrayOfClass);
+
+
+
+// OGGETTI:
+
+
+const Andrea= {
+
+    name: 'Andrea',
+    surname: 'Asioli',
+    yob: 1978,
+    inMarried: false,
+    nikname: 'labstraction',
+    pupils: ['Andrea', 'Davide', 'Jing', 'Valentina', 'Vlad'],
+    dog: {
+        name: 'Ariel',
+        breed: 'Border-Collie'
+    },
+    email: "andreaaxia@gmail.com",
+    "Cool Car": "BMW"  // Se si volesse inserire un nome particolare, separato per
+                        // esempio dallo "spazio", si scrive tra le virgolette!
+};
+
+console.log(Andrea);  // L'oggetto è una collezione di dati e non rimane in ordine nel log
+console.log(Andrea.surname);
+console.log(Andrea['Cool Car']);  // Questo modo permette di poter richiamare ad esempio 
+console.log(Andrea['yob']);      // "Cool Car", perché separato dallo spazio.
+
+
+
+const Davode = {
+
+    name: "Davide",
+    surname: "Consigliere",
+    yob: 1989,
+    nikname: "Dave",
+    email: "dave89dc@gmail.com"
+
+};
+
+const myClass = [Davode, Andrea];
+
+// for (let i = 0; i < myClass.length; i++) {
+    
+//     let classOfArray = myClass[i];
+//     console.log("NOME: ", classOfArray.name + " " + classOfArray.surname + " " + `(${classOfArray.nikname})`);
+//     console.log("ETA: ", + `${2023 - classOfArray.yob}`);
+//     console.log("EMAIL: ", classOfArray.email);
+    
+// };
+
+for (let i = 0; i < myClass.length; i++) {
+    
+    const person = myClass[i];
+    let description =
+    `NOME: ${person.name} ${person.surname} (${person.nikname})
+      ETA: ${2023 - person.yob}
+      Email: ${person.email}`;
+    console.log(description);
     
 };
+
+
+// CONVERSIONE (da array ad oggetti e viceversa):
+
+
+const arielloArray = ['Ariel', 'Border-Collie', 'Maschio', 'Bianco&Nero'];
+
+const arielloObject = {
+
+    name: arielloArray[0],
+    breed: arielloArray[1],
+    gender: arielloArray[2],
+    color: arielloArray[3]
+
+};
+
+console.log(arielloArray);
+console.log(arielloObject);
+
+const newArielloArray = Object.values(arielloObject);  // Qua si prerndono i valori!
+
+console.log(newArielloArray);  // L'ordine non è garantito.
+
+const newKeysArray = Object.keys(arielloObject);  // Qua si prendono le chiavi!
+
+console.log(newKeysArray);
+
+
+
+//  VALUE TIPES AND REFERNCE TYPES:
+
+
+
+let daveGahan = 5;
+const martinGore = daveGahan;
+daveGahan = 7;
+
+console.log(daveGahan);  // log. 7
+console.log(martinGore); // log. 5
+
+let depecheMode = {yob: 1979, genre: 'electro-rock'};
+let newDepecheMode = depecheMode;
+depecheMode.yob = 1980;
+
+console.log(depecheMode.yob);  // ENTRAMBI (a differenza dell'esempio precedente)...
+console.log(newDepecheMode.yob); // ...LOGGANO 1980!!!
+
+// Gli OGGETTI vengono salvati NON nello STACK, ma nell'HEEP, quindi NON vengono salvati
+// i valori (che è tipo una copia), ma viene salvato l'INDIRIZZO!!!
+// Questo è il motivo per cui una variabile che contiene un oggetto cambia valore
+// di conseguenza, come nell'esempio precedente! LO STESSO VALE NELLE FUNZIONI!!!
+
+
+
+function sum2 (selectedNumber) {
+    selectedNumber = selectedNumber + 2;
+    return selectedNumber;
+};
+
+let andrewFletcher = 5;
+let alanWilder = sum2(andrewFletcher);
+
+console.log(andrewFletcher);  // log. 5
+console.log(alanWilder);  // log. 7
+
+
+function make2YearsOlder (person) {     // Questa funzione, a differenza di quella precedente,
+    person.yob = (2023 - person.yob) + 2;   // va a lavorare su un'oggetto, 
+    return person;                          // non un semplice valore!
+};
+
+let Dave = {name: 'Davode', yob: 1989};
+
+let olderDave = make2YearsOlder(Dave);
+
+console.log(Dave);        // SONO INVECCHIATI DI 2 ANNI ENTRAMBI!!!!
+console.log(olderDave);  // Questo riprende estattamente il concetto spiegato prima!
+
+
+// PER RISOLVERE QUESTO PROBLEMA SI FANNO I CLONI!!!
+
+
+function make2YearsOlderWithClone (person) {
+    // let clone = {name: person.name, yob: person.yob};
+    let clone = {...person};  // Qua fa la stessa cosa di quello sopra, ma riassunto!
+    clone.yob = clone.yob - 2;
+    return clone.yob;
+};
+
+let simone = {name: "Simone", yob: 2003};
+
+let olderSimone = make2YearsOlderWithClone(simone);
+
+console.log(simone);  // In questo modo lo yob originale rimane (log. 2003).
+console.log(olderSimone); // Qui invecchia di 2 anni (log. 2001).
+
+
+// DESTRUTTURARE:
+
+// Metodo normale:
+
+// const book = {
+
+//     title: "La Divina Commedia",
+//     author: "Dante Alighieri",
+//     year: 2019,
+//     country: "Italy",
+//     editor: "Einaudi"
+
+// };
+
+// const title = book.title;
+// const author = book.author;
+
+// console.log(title, "di " + author);
+
+// Con la destrutturazione:
+
+
+// const {title, author} = book;
+
+// console.log(title, author);
+
+
+
+// JSON (JavaScript Serialization Object Notation):
+
+
+// Il JSON è utilizzato in tutti i linguaggi di programmazione,
+// ed è nato per convertire velocemnte un oggetto in stringa e viceversa.
+
+
+const book = {
+
+    title: "La Divina Commedia",
+    author: "Dante Alighieri",
+    year: 2019,
+    country: "Italy",
+    editor: "Einaudi"
+
+};
+
+const bookToString = JSON.stringify(book);
+
+console.log(book); // In log sarà un oggetto!
+console.log(bookToString); // In log sarà una stringa!
+
+const bookToString2 = `{"title":"Iliade","author":"Omero","year":2019,"country":"Italy","editor":"Giunti"}`;
+
+const book2 = JSON.parse(bookToString2);
+console.log(book2);  // In log sarà un oggetto!
+
+
+
+
+// FILTER (filtrare un array):
+
+// 1) Scrivere una funzione che dato un array di numeri restituisce un array con i
+//    numeri maggiori o uguali a 0 (positivi):
+
+
+// const Numbers = [100, -23, 0, -234, 1001, 1, 34, -12];
+
+
+// function filterPositive (arrayOfNumbers) {
+
+//     let positiveNumbers = [];
+//     for (let i = 0; i < arrayOfNumbers.length; i++) {
+        
+//         if (arrayOfNumbers[i] >= 0) {
+//             positiveNumbers.push(arrayOfNumbers[i]);
+//         };
+        
+//     };
+
+//     return positiveNumbers;
+
+// };
+
+// console.log(filterPositive(Numbers));
+
+
+
+
+// MAPPING (fare un nuovo array partendo da uno di partenza):
+
+// 2) Scrivere una funzione che dato un array di numeri li moltiplic tutti per 2:
+
+
+// const Numbers = [100, -23, 0, -234, 1001, 1, 34, -12];
+
+
+// function mulitplyAllElementsBy2 (array) {
+
+//     let multiplyedNumbers = [];
+//     for (let i = 0; i < array.length; i++) {
+//         let result = array[i] * 2;
+//         multiplyedNumbers.push(result);
+//     };
+
+//     return multiplyedNumbers;
+
+// };
+
+// console.log(mulitplyAllElementsBy2(Numbers));
+
+
+
+
+// REDUCE (fare dei calcoli e avere un risultato da un array):
+
+// 3) Creare una funzione che somma tutti gli elementi di un array di numeri:
+
+
+const Numbers = [100, -23, 0, -234, 1001, 1, 34, -12];
+
+
+
+function sumAllElements (array) {
+
+    let tempNumbers = 0;
+    for (let i = 0; i < array.length; i++) {
+        let element = array[i];
+        tempNumbers = tempNumbers + element;
+    };
+
+    return tempNumbers;
+
+};
+
+console.log(sumAllElements(Numbers));
+
+
 
 
 // ESERCIZI:
@@ -96,25 +399,25 @@ console.log(fizzBuzzNumbers(numbersToFizzBuzz));
 //    e fa il console.log() di quelle più piccole di 5 caratteri:
 
 
-// const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia', 'nodo', 'panzerotto'];
+const arrayOfStrings = ['cioccolato', 'blu', 'cita', 'pansoti', 'timo', 'ferrovia', 'nodo', 'panzerotto'];
 
-// function only5Chars (array) {
+function only5Chars (array) {
 
-//     const newArray = [];
+    const newArray = [];
 
-//     for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
 
-//         if (array[i].length < 5) {
-//             newArray.push(array[i]);
-//         };
+        if (array[i].length < 5) {
+            newArray.push(array[i]);
+        };
         
-//     };
+    };
 
-//     return newArray;
+    return newArray;
 
-// };
+};
 
-// console.log(only5Chars(arrayOfStrings));
+console.log(only5Chars(arrayOfStrings));
 
 
 
@@ -143,7 +446,7 @@ function firt5CharsOfString (string) {
 };
 
 
-function firt5CharsToUppeCase (array) {
+function firt5CharsToUpperCase (array) {
 
     let newArray = [];
 
@@ -157,7 +460,7 @@ function firt5CharsToUppeCase (array) {
 
 };
 
-console.log(firt5CharsToUppeCase(food));
+console.log(firt5CharsToUpperCase(food));
 
 
 
@@ -247,7 +550,7 @@ function countBs (stringa) {
 };
 
 
-console.log(countBs('BaraBacBà'));
+console.log(countBs('BarbaBacBà'));
 
 
 function countChar (text, char) {
@@ -276,4 +579,52 @@ function countChar (text, char) {
 
 console.log(countChar('ciao rino, salutami checco', 'r'));
 
+<<<<<<< HEAD
 console.log(food.length);
+=======
+
+
+// ALTRI ESERCIZI:
+
+
+// 1) Scrivere una funzione che prende in input un array di numeri e restituisce
+//    un altro arry degli elementi in logica FizzBuzz, e il numero restituito in stringa:
+
+
+const numbers = [3, 5, 15, 8, 12, 2]; // 'Fizz', 'Buzz', 'FizzBuzz', '8', 'Fizz', '2'
+
+function convertArrayInFizzBuzz (array) {
+
+
+
+};
+
+
+// 2) Scrivere una funzione che prenda come input un array di numeri e restituisce
+//    un altro array di numeri in cui i positivi sono trasformati in negativi e viceversa:
+
+
+
+// 3) Scrivere una funzione che prenda come input un array di stringhe e restituisce
+//    un altro array di numeri con la lunghezza delle stringhe:
+
+
+
+// 4) Scrivere una funzione che prenda come input un array di stringhe e restituisce
+//    solo quelle che contengono la lettera z:
+
+
+
+// 5) Scrivere una funzione che prenda come input un array di numeri e restituisce
+//    solo quelli pari:
+
+
+
+// 6) Scrivere una funzione che prende come input un array di stringhe e restituisce 
+//    una stringa composta dalle iniziali:
+
+
+
+// 7) Scrivere una funzione che prende in input un array di numeri e 
+//    restituisce il maggiore:
+>>>>>>> 082286f2654a0f82f9b99721bcb273ee2c9385fd
