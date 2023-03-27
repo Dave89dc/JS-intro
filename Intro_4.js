@@ -275,3 +275,5 @@ function countChar (text, char) {
 
 
 console.log(countChar('ciao rino, salutami checco', 'r'));
+
+console.log(food.length);
