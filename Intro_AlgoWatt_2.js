@@ -40,7 +40,7 @@
 // Questa operazione però è poco utile, perché eseguirà sempre e solo la
 // stessa operazione.
 
-// Per rendera utile le si assegna un parametro generico, aumentandone la versatilità:
+// Per renderla utile le si assegna un parametro generico, aumentandone la versatilità:
 
 // function logNumbersFrom0To (numMax) {
 //     for (let i = 0; i < numMax; i++) {
@@ -58,7 +58,7 @@
 
 // };
 
-// Le funzioni possono essere passate come parametri ad altr funzioni:
+// Le funzioni possono essere passate come parametri ad altre funzioni:
 
 // function repeatFrom0To (maxNum, func) {     // Diciamo alla funzione di fare un ciclo da
 //     for (let i = 0; i < maxNum; i++) {      // 0 a maxNum, eseguendo una funzione a mia scelta
@@ -229,15 +229,31 @@ let res = words.filter(w => w.length > 5)
                 .map(w => w.length)
                 .forEach(l => console.log(l));
 
-for (let w of words) {
+// for (let w of words) {
 
-    if (w.length < 6) {
-        continue;
-    };
+//     if (w.length < 6) {
+//         continue;
+//     };
 
-};
+// };
 
 
 console.log(res);
 
 
+// ESERCIZI:
+
+
+let arrays = [[1, 2, 3], [4, 5], [6]];
+
+
+
+function concatArrays (array) {
+
+    let singleArray = [];
+    for (let i = 0; i < array.length; i++) {
+        
+    };
+
+
+};
