@@ -380,3 +380,90 @@ const add4 = applyTwice (add2);
 console.log(add4(10)); // 14
 
 console.log(applyTwice(applyTwice(add1))(10)); // 14
+
+
+
+let arrayOfSheep = [true,  true,  true,  false,
+    true,  true,  true,  true ,
+    true,  false, true,  false,
+    true,  false, false, true ,
+    true,  true,  true,  true ,
+    false, false, true,  true];
+
+function countSheeps(array) {
+    let counter = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === true) {
+            counter += 1;
+        };
+    };
+    return counter;
+};
+
+console.log(countSheeps(arrayOfSheep));
+
+
+let numbers4 = [78,56,232,12,8];
+
+
+function digitize(n) {
+    let array = [];
+    let numbers= n.toString();
+    for(let i=0; i<numbers.length; i++){
+      array.unshift(Number(numbers[i]));
+    };
+    return array;
+};
+
+
+console.log(digitize(54893145));
+
+
+// const stringToArray = (string) => map(string.split(" "));
+
+// console.log(stringToArray("Robin Singh"));
+
+
+let s = "Robin Singh";
+let split = s.split(" ");
+console.log(split);
+
+
+// const double = array => array.map((elements) => elements * 2);
+
+function double (array) {
+    let newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        newArray.push(array[i]*2);
+    };
+    return newArray;
+}
+
+console.log(double([1, 2, 3]));
+
+
+
+
+function reverseSeq (num) {
+
+    let array = [num];
+    if (num>0){
+        for (let i = num; i > 1; i--) {
+            array.push(num-=1);
+        }
+        return array;
+    };
+}
+
+console.log(reverseSeq(8));
+
+
+function squareSum(array){
+    let result = 0;
+    for (let i = 0; i < array.length; i++) {
+        result += array[i]**2;
+    };
+    return result;
+};
+
+console.log(squareSum([1,2]));

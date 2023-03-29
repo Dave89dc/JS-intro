@@ -148,6 +148,8 @@ const arielloObject = {
 console.log(arielloArray);
 console.log(arielloObject);
 
+// Trasformare oggetti in array:
+
 const newArielloArray = Object.values(arielloObject);  // Qua si prerndono i valori!
 
 console.log(newArielloArray);  // L'ordine non è garantito.
@@ -590,33 +592,50 @@ console.log(countChar('ciao rino, salutami checco', 'r'));
 
 const numbers = [3, 5, 15, 8, 12, 2]; // 'Fizz', 'Buzz', 'FizzBuzz', '8', 'Fizz', '2'
 
-function convertArrayInFizzBuzz (array) {
+// function convertArrayInFizzBuzz (array) {
 
-    let FizzBuzzArray = [];
-    for (let i = 0; i < array.length; i++) {
+//     let FizzBuzzArray = [];
+//     for (let i = 0; i < array.length; i++) {
         
-        if (array[i] % 5 === 0 && array[i] % 3 === 0) {
-            array[i] = "FizzBuzz";
-            FizzBuzzArray.push(array[i]);
-        } else if (array[i] % 5 === 0) {
-            array[i] = "Buzz";
-            FizzBuzzArray.push(array[i]);
-        } else if (array[i] % 3 === 0) {
-            array[i] = "Fizz";
-            FizzBuzzArray.push(array[i]);
+//         if (array[i] % 5 === 0 && array[i] % 3 === 0) {
+//             array[i] = "FizzBuzz";
+//             FizzBuzzArray.push(array[i]);
+//         } else if (array[i] % 5 === 0) {
+//             array[i] = "Buzz";
+//             FizzBuzzArray.push(array[i]);
+//         } else if (array[i] % 3 === 0) {
+//             array[i] = "Fizz";
+//             FizzBuzzArray.push(array[i]);
+//         } else {
+//             FizzBuzzArray.push(array[i].toString());
+//         };
+        
+//     };
+
+//     return FizzBuzzArray;
+
+// };
+
+// console.log(convertArrayInFizzBuzz(numbers));
+
+
+const FizzBuzzNumbers = numbers.map((previousElement, currentElement) => {  
+
+    if (previousElement % 5 === 0 && previousElement % 3 === 0) {
+            currentElement = "FizzBuzz";
+        } else if (previousElement % 5 === 0) {
+            currentElement = "Buzz";
+        } else if (previousElement % 3 === 0) {
+            currentElement = "Fizz";
         } else {
-            FizzBuzzArray.push(array[i].toString());
+            currentElement.toString();
         };
-        
-    };
 
-    return FizzBuzzArray;
+    return currentElement;
 
-};
+}, 0); 
 
-console.log(convertArrayInFizzBuzz(numbers));
-
-
+console.log(FizzBuzzNumbers);
 
 
 // 2) Scrivere una funzione che prenda come input un array di numeri e restituisce
@@ -625,18 +644,21 @@ console.log(convertArrayInFizzBuzz(numbers));
 
 const numbers2 = [18, 67, -2, 202, -400, -7, 44, -5];
 
-function convertNumbers (array) {
+// function convertNumbers (array) {
 
-    let convertedNumbers = [];
-    for (let i = 0; i < array.length; i++) {
-        convertedNumbers.push(array[i] * -1);
-    };
+//     let convertedNumbers = [];
+//     for (let i = 0; i < array.length; i++) {
+//         convertedNumbers.push(array[i] * -1);
+//     };
 
-    return convertedNumbers;
+//     return convertedNumbers;
 
-};
+// };
 
-console.log(convertNumbers(numbers2));
+// console.log(convertNumbers(numbers2));
+
+const inversionOfPositiveAndNegative = numbers2.map(elements => elements * -1);
+console.log(inversionOfPositiveAndNegative);
 
 
 
@@ -647,18 +669,22 @@ console.log(convertNumbers(numbers2));
 
 const arrayOfStrings = ["cioccolato", "panino con salsiccia", "focaccia", "crema di pistacchio", "belin che fame"];
 
-function arrayOfStringsLength (array) {
+// function arrayOfStringsLength (array) {
 
-    let stringsLength = [];
-    for (let i = 0; i < array.length; i++) {
-        stringsLength.push(array[i].length);
-    };
+//     let stringsLength = [];
+//     for (let i = 0; i < array.length; i++) {
+//         stringsLength.push(array[i].length);
+//     };
 
-    return stringsLength;
+//     return stringsLength;
 
-};
+// };
 
-console.log(arrayOfStringsLength(arrayOfStrings));
+// console.log(arrayOfStringsLength(arrayOfStrings));
+
+
+const lengthOfElements = arrayOfStrings.map(elements => elements.length);
+console.log(lengthOfElements);
 
 
 
@@ -667,27 +693,27 @@ console.log(arrayOfStringsLength(arrayOfStrings));
 //    solo quelle che contengono la lettera z:
 
 
-const arrayOfStrings2 = ["squalo", "armadillo", "zanzara", "pipistrello", "zebù", "zebra"];
+const arrayOfStrings2 = ["squalo", "armadillo", "zanzara", "Zattera", "pipistrello", "zebù", "zebra"];
 
-function onlyWordsWithZchars (array) {
+// function onlyStringsWithZChar (array) {
 
-    let stringsWithZchars = [];
-    for (let i = 0; i < array.length; i++) {
+//     let zCharStrings = [];
+//     for (let i = 0; i < array.length; i++) {
         
-        if (array[i].includes("z") || array[i].includes("Z") ) { // Oppure: (array[i].indexOf("z") !== -1)
-            stringsWithZchars.push(array[i]);
-        }
-        
-    };
+//         if (array[i].includes("z") || array[i].includes("Z")) {
+//             zCharStrings.push(array[i]);
+//         };
 
-    return stringsWithZchars;
+//     };
 
-};
+//     return zCharStrings;
 
-console.log(onlyWordsWithZchars(arrayOfStrings2));
+// };
 
+// console.log(onlyStringsWithZChar(arrayOfStrings2));
 
-
+const onlyStringsWithZChar = arrayOfStrings2.filter(elements => elements.includes("z") || elements.includes("Z"));
+console.log(onlyStringsWithZChar);
 
 
 // 5) Scrivere una funzione che prenda come input un array di numeri e restituisce
@@ -696,23 +722,26 @@ console.log(onlyWordsWithZchars(arrayOfStrings2));
 
 const arrayOfNumbers3 = [15, 7, 22, 4, 6, 61, 99, 102, 400, 9];
 
-function onlyEvenNumbers (array) {
+// function onlyEvenNumbers (array) {
 
-    let arrayOfEvenNumbers = [];
-    for (let i = 0; i < array.length; i++) {
+//     let arrayOfEvenNumbers = [];
+//     for (let i = 0; i < array.length; i++) {
         
-        if (array[i] % 2 === 0) {
-            arrayOfEvenNumbers.push(array[i]);
-        };
+//         if (array[i] % 2 === 0) {
+//             arrayOfEvenNumbers.push(array[i]);
+//         };
 
-    };
+//     };
 
-    return arrayOfEvenNumbers;
+//     return arrayOfEvenNumbers;
 
-};
+// };
 
-console.log(onlyEvenNumbers(arrayOfNumbers3));
+// console.log(onlyEvenNumbers(arrayOfNumbers3));
 
+
+const onlyEvenNumbers = arrayOfNumbers3.filter(elements => elements % 2 === 0);
+console.log(onlyEvenNumbers);
 
 
 
@@ -724,18 +753,21 @@ console.log(onlyEvenNumbers(arrayOfNumbers3));
 
 const arrayOfStrings3 = ["Squalo", "Armadillo", "Zanzara", "Pipistrello", "Zebù", "Zebra"];
 
-function firstCharsOfStrings (array) {
+// function firstCharsOfStrings (array) {
 
-    let firstChars = "";
-    for (let i = 0; i < array.length; i++) {
-        firstChars += array[i][0];
-    };
+//     let firstChars = "";
+//     for (let i = 0; i < array.length; i++) {
+//         firstChars += array[i][0];
+//     };
 
-    return firstChars;
+//     return firstChars;
 
-};
+// };
 
-console.log(firstCharsOfStrings(arrayOfStrings3));
+// console.log(firstCharsOfStrings(arrayOfStrings3));
+
+const stringOfFirstCharsOfElements = arrayOfStrings3.reduce((previousElement, currentElement) => previousElement + currentElement[0], "");
+console.log(stringOfFirstCharsOfElements);
 
 
 
@@ -744,27 +776,40 @@ console.log(firstCharsOfStrings(arrayOfStrings3));
 //    restituisce il maggiore:
 
 
-const arrayOfNumbers4 = [15, 7, 220, 20, 6, 61, 99, 102, 400, 9];
+const arrayOfNumbers4 = [15, 7, 220, 20, 2000, 6, 61, 99, 102, 400, 9];
 
 
-function maxElement (array) {
+// function maxElement (array) {
 
-    let tempNumber = array[0];
-    for (let i = 1; i < array.length; i++) {
+//     let tempNumber = array[0];
+//     for (let i = 1; i < array.length; i++) {
         
-        const element = array[i];
-        if (tempNumber < element) {
-            tempNumber = element;
-        };
+//         const element = array[i];
+//         if (tempNumber < element) {
+//             tempNumber = element;
+//         };
         
+//     };
+
+//     return tempNumber;
+
+// };
+
+
+// console.log(maxElement(arrayOfNumbers4));
+
+const maxElement = arrayOfNumbers4.reduce((previousElement, currentElement) => {
+    
+    if (previousElement > currentElement) {
+        currentElement = previousElement;
     };
 
-    return tempNumber;
+    return currentElement;
 
-};
+}, 0);
 
+console.log(maxElement);
 
-console.log(maxElement(arrayOfNumbers4));
 
 
 
@@ -867,31 +912,30 @@ console.log(reverseArray(["A", "B", "C", "D"]));
 
 
 
-const seriesOfNumbers = [1, 2, 3, 4, 5];
+// const seriesOfNumbers = [1, 2, 3, 4, 5];
 
-const seriesOfNumbers2 = [3, 7, 11, 21, 34, 43, 101];
+// const seriesOfNumbers2 = [3, 7, 11, 21, 34, 43, 101];
 
-function reverseArrayInPlace (array) {
+// function reverseArrayInPlace (array) {
 
-    for (let i = array.length-1; i >= 0; i--) {
-        array.push(array[i]);
-    };
+//     for (let i = array.length-1; i = 0; i--) {
+        
+//         array.pop()
+//         array.unshift(array[i]);
+        
+//     };
 
-    for (let i = 0; i < array.length-1/2; i++) {
-        array.shift();
-    };
+//     return array;
 
-    return array;
+// };
 
-};
+// reverseArrayInPlace(seriesOfNumbers);
 
-reverseArrayInPlace(seriesOfNumbers);
+// console.log(seriesOfNumbers);
 
-console.log(seriesOfNumbers);
+// reverseArrayInPlace(seriesOfNumbers2);
 
-reverseArrayInPlace(seriesOfNumbers2);
-
-console.log(seriesOfNumbers2);
+// console.log(seriesOfNumbers2);
 
 
 
