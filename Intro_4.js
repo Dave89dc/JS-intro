@@ -674,7 +674,7 @@ function onlyWordsWithZchars (array) {
     let stringsWithZchars = [];
     for (let i = 0; i < array.length; i++) {
         
-        if (array[i].includes("z") || array[i].includes("Z") ) {
+        if (array[i].includes("z") || array[i].includes("Z") ) { // Oppure: (array[i].indexOf("z") !== -1)
             stringsWithZchars.push(array[i]);
         }
         
@@ -726,9 +726,9 @@ const arrayOfStrings3 = ["Squalo", "Armadillo", "Zanzara", "Pipistrello", "Zebù
 
 function firstCharsOfStrings (array) {
 
-    let firstChars = [];
+    let firstChars = "";
     for (let i = 0; i < array.length; i++) {
-        firstChars.push(array[i][0]);
+        firstChars += array[i][0];
     };
 
     return firstChars;
@@ -746,11 +746,25 @@ console.log(firstCharsOfStrings(arrayOfStrings3));
 
 const arrayOfNumbers4 = [15, 7, 220, 20, 6, 61, 99, 102, 400, 9];
 
-const maxNumber = (array) => Math.max(...array);
 
-console.log(maxNumber(arrayOfNumbers4));
+function maxElement (array) {
+
+    let tempNumber = array[0];
+    for (let i = 1; i < array.length; i++) {
+        
+        const element = array[i];
+        if (tempNumber < element) {
+            tempNumber = element;
+        };
+        
+    };
+
+    return tempNumber;
+
+};
 
 
+console.log(maxElement(arrayOfNumbers4));
 
 
 
@@ -881,4 +895,102 @@ console.log(seriesOfNumbers2);
 
 
 
+// TUTTI I CICLI IN JAVASCRIPT:
 
+
+const numbers3 = [9, 8, 7, 1, 2, 3];
+
+
+// WHILE:
+
+let i = 0;
+
+while (i < numbers3.length) {
+
+    const element = numbers3[i];
+    console.log(element);
+    i++
+
+};
+
+
+
+// DO WHILE:
+
+let j = 0;
+
+do {
+    const element = numbers[j];
+    console.log(element);
+    j++;
+} while (j < numbers3.length);
+
+
+
+// FOR:
+
+for (let i = 0; i < numbers3.length; i++) {
+
+    const element = numbers3[i];
+    console.log(element);
+
+};
+
+
+
+// FOROF:
+
+for (const element of numbers3) {
+    console.log(element);
+};
+
+
+
+// FOR EACH:
+
+numbers3.forEach((element) => console.log(element));
+
+
+
+// MAP:
+
+numbers3.map((element) => element * 2);
+
+
+
+// FILTER:
+
+numbers3.filter((element) => element % 2 === 0);
+
+
+
+// REDUCE:
+
+numbers3.reduce((previousElement, currentElement) => previousElement + currentElement, 0);
+
+// Lo 0 è il valore iniziale (indica anche il tipo, in questo caso un numero)
+// di previous element (al primo giro), che man mano cambierà.
+
+// Esempio di reduce con stringhe:
+
+const strings = ["qui", "quo", "qua"];
+
+strings.reduce((previousElement, currentElement) => previousElement + currentElement, "");
+
+
+
+// FORIN (Per ciclare gli oggetti):
+
+const Andrea1 = {
+    name: "Andrea",
+    surname: "Asioli",
+    hasADog: true,
+    yob: 1978
+};
+
+for (const key in Andrea1) {
+    if (Object.hasOwnProperty.call(Andrea1, key)) {
+        const value = Andrea1[key];
+        console.log(`Andrea ha la proprietà ${key} associata al valore ${value}`);
+    };
+};

@@ -257,3 +257,126 @@ function concatArrays (array) {
 
 
 };
+
+
+
+// CONCETTI FONDAMENTALI:
+
+
+// 1) Le higher order functions sono abbastanza strane.
+// 2) La reduce è la più strana in assoluto.
+// 3) Esistono molti linguaggi di programazione che ne fanno tranquillamente a meno.
+// 4) Esistono molti programmatori che ne fanno tranquillamente a meno,
+//    anche programmatori molto bravi.
+// 5) Ogni volta che qualcuno dei ragazzi che lavora con Andrea deve scrivere una reduce
+//    non banale, lo chiama per chiedergli conforto.
+// 6) Purtroppo bisogna imparare almeno a leggerle!!!
+// 7) Le Higer Order Function sono funzioni che possono avere in input, in output
+//    o in entrambi una funzione.
+
+
+// Le funzioni MAP sono quelle che in input hanno una funzione:
+// es: console.log([3, 5, 12, 1].map((numero) => numero * 2));
+
+// La funzione MAP crea un output un nuovo array con all'interno i risultati!
+
+
+
+// Funzione inventata da Simone e usata come esempio in classe:
+
+
+function loopNumbersFrom1To15AndApplyFunctions (myStrangeFunction, mySecondStrangeFunction) {
+    for (let i = 1; i < 16; i++) {
+        const resultOfStrangeFunction = myStrangeFunction(i);
+        mySecondStrangeFunction (resultOfStrangeFunction);
+    };    
+};
+
+function divideBy2IfEven (myNumber) {
+    
+    if (myNumber % 2 === 0) {
+        return myNumber / 2;
+    };
+
+    return myNumber;
+
+};
+
+function logIfGreaterThan4 (myNumber) {
+
+    if (myNumber > 4) {
+        console.log(myNumber);
+    };
+
+};
+
+loopNumbersFrom1To15AndApplyFunctions (divideBy2IfEven, logIfGreaterThan4);
+
+loopNumbersFrom1To15AndApplyFunctions (logIfGreaterThan4, divideBy2IfEven);
+
+// Invertendo le funzioni la funzione principale termina il suo compito con la prima,
+// perché logga direttamente tutti i numeri da 5 a 15 e alla seconda funzione arrivano
+// solo degli "undefined", perché il console.log non ritona niente, essendo una funzione
+// impura!
+
+
+// ESMPIO DI FUNZIONE CHE GENERA IN OUTPUT UN'ALTRA FUNZIONE:
+
+
+function createMoltiplicator (myNumber) {
+    
+    function multiply (selectedNumber) {
+        return selectedNumber * myNumber;
+    };
+    return multiply;
+
+    // Meglio scritta in Lambda in un'unica riga di codice:
+    // return (selectedNumber) => selectedNumber * myNumber;
+
+};
+
+
+// Oppure si potrebbe scrivere così:
+
+// const createMoltiplicator = (selectedNumber) => (myNumber) => selectedNumber * myNumber;
+
+
+const moltiplyNumberBy2 = createMoltiplicator(2);
+const moltiplyNumberBy3 = createMoltiplicator(3);
+
+console.log(moltiplyNumberBy2(2));
+console.log(moltiplyNumberBy3(3));
+
+// Oppure si potrebbe scrivere così:
+
+// const createMoltiplicator = (selectedNumber) => (myNumber) => selectedNumber * myNumber;
+
+// Oppure i console.log si potrebbero fare così:
+
+console.log(createMoltiplicator(5)(4)); // myNumber è 5, SelectedNumber è il 4.
+
+
+
+// ESEMPIO DI UN FUNZIONE CHE RICEVE UNA FUNZIONE IN INPUT E RITORNA IN
+// OUTPUT UN'ALTRA FUNZIONE:
+
+
+function applyTwice (myFunction) {
+    return (input) => myFunction (myFunction (input));
+};
+
+function add1 (selectedNumber) {
+    return selectedNumber + 1;
+};
+
+const add2 = applyTwice (add1);
+
+console.log(add2(5)); // 7
+
+// Si può continuare all'infinito:
+
+const add4 = applyTwice (add2);
+
+console.log(add4(10)); // 14
+
+console.log(applyTwice(applyTwice(add1))(10)); // 14
