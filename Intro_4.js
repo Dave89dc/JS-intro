@@ -766,8 +766,8 @@ const arrayOfStrings3 = ["Squalo", "Armadillo", "Zanzara", "Pipistrello", "Zebù
 
 // console.log(firstCharsOfStrings(arrayOfStrings3));
 
-const stringOfFirstCharsOfElements = arrayOfStrings3.reduce((previousElement, currentElement) => previousElement + currentElement[0], "");
-console.log(stringOfFirstCharsOfElements);
+const sumFirstCharsOfElements = arrayOfStrings3.reduce((previousElement, currentElement) => previousElement + currentElement[0], "");
+console.log(sumFirstCharsOfElements);
 
 
 
@@ -800,13 +800,13 @@ const arrayOfNumbers4 = [15, 7, 220, 20, 2000, 6, 61, 99, 102, 400, 9];
 
 const maxElement = arrayOfNumbers4.reduce((previousElement, currentElement) => {
     
-    if (previousElement > currentElement) {
-        currentElement = previousElement;
+    if (previousElement < currentElement) {
+        return currentElement;
     };
 
-    return currentElement;
+    return previousElement;
 
-}, 0);
+}, -Infinity);
 
 console.log(maxElement);
 
@@ -1038,3 +1038,10 @@ for (const key in Andrea1) {
         console.log(`Andrea ha la proprietà ${key} associata al valore ${value}`);
     };
 };
+
+
+
+// FIND è il filter, ma restituisce solo il primo numero che corrispode alla condizione
+
+// SOME restituisce un booleano se nell'array c'è almeno un elemento che corrisponde 
+// alla condizione.
